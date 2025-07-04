@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Birthday Love Surprise! 💖</title>
+    <style>
+        body { 
+            text-align: center; 
+            font-family: Bradley hand ITC, sans-serif; 
+            padding: 20px; 
+            background: linear-gradient(to top, #ff99ff 0%, #ff0066 100%); 
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 { font-size: 2.5rem; animation: fadeIn 2s ease-in-out; }
+        button { 
+            font-size: 18px; padding: 12px 20px; margin: 10px; 
+            cursor: pointer; background-color: #ff4081; color: white; 
+            border: none; border-radius: 10px; 
+            transition: transform 0.3s, background 0.3s;
+        }
+        button:hover { background-color: #d81b60; transform: scale(1.1); }
+        .popup { 
+            position: fixed; top: 50%; left: 50%; 
+            transform: translate(-50%, -50%) scale(0.5);
+            background: white; color: black; padding: 20px; 
+            border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.3); 
+            display: none; opacity: 0; transition: opacity 0.5s, transform 0.3s;
+        }
+        .heart { position: absolute; color: red; font-size: 20px; animation: fall linear infinite; }
+        .firework { position: absolute; width: 10px; height: 10px; background: yellow; border-radius: 50%; animation: explode 1s ease-out; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fall { from { transform: translateY(-50px); opacity: 1; } to { transform: translateY(100vh); opacity: 0; } }
+        @keyframes explode { from { transform: scale(1); opacity: 1; } to { transform: scale(5); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Happy Birthday, dear....🎉 <br> A very Happy Birthday to you... <br>My Dear Ishu.. 💖</h1>
+    <p id="countdown">⏳ Counting down to the big moment...</p>
+    <img src="I5.jpg" alt="I5" width="215" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" align="left">
+	<img src="I7.jpg" alt="I7" width="230" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);"align="right">
+	<img src="U1.jpg" alt="U1" width="217" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);"align="center">
+    <br>
+	<!-- Play Music Button -->
+    <center><button onclick="playMusic()">🎶 Play Music</button></center>
+
+    <!-- Background Music (hidden) -->
+    <audio id="bg-music" loop>
+        <source src="sajna.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function playMusic() {
+            let audio = document.getElementById("bg-music");
+            audio.volume = 0.5; // Set volume (adjust as needed)
+            audio.play().catch(error => console.log("Autoplay blocked:", error));
+        }
+    </script>
+    <button onclick="showSurprise()">Click this...<br>[Get cute surprise text with repeated clicks!] 💕</button>
+    <button onclick="openLoveLetter()">💌 Read the Love Letter for you.</button>
+	
+
+    <div id="love-popup" class="popup">
+        <p id="popup-message">💖 You are my everything! Happy Birthday, my love! 💕</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+	<script>
+        let birthdayDate = new Date(2025, 6, 5, 0, 0, 0).getTime();
+        function updateCountdown() {
+            let now = new Date().getTime();
+            let timeLeft = birthdayDate - now;
+            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = `⏳ ${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds Left!`;
+        }
+        setInterval(updateCountdown, 1000);
+
+        function showSurprise() {
+            let loveMessages = [
+                "💖 Happyyyy 25th Birthday, my dear Ishu.... 💕",
+                "💋 Lets welcome this new year with more and more happiness... 😘",
+                "🎉 Wish you a veerryyyyy happyyy and joyful new year of life, with meeeee...! 🥰",
+                "🌹 You make my world brighter every single day with your charm, cuteness, intelligence,  ❤️",
+                "💕 My love for you grows stronger with every heartbeat! 💘",
+                "💖 Love you, my ishuuuuuuuu.... lotssss of love, my LOVE. 💕"
+            ];
+            document.getElementById("popup-message").innerHTML = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+            showPopup();
+            createFireworks();
+        }
+
+        function showPopup() {
+            let popup = document.getElementById("love-popup");
+            popup.style.display = "block";
+            setTimeout(() => { popup.style.opacity = "1"; popup.style.transform = "translate(-50%, -50%) scale(1)"; }, 50);
+        }
+
+        function closePopup() {
+            let popup = document.getElementById("love-popup");
+            popup.style.opacity = "0";
+            popup.style.transform = "translate(-50%, -50%) scale(0.5)";
+            setTimeout(() => { popup.style.display = "none"; }, 300);
+        }
+		
+        function openLoveLetter() {
+            let loveLetterWindow = window.open("", "_blank", "width=400,height=400");
+            loveLetterWindow.document.write(`
+                <html><head><title>💌 Love Letter</title></head><body style="text-align:center;font-family:Papyrus;padding:20px;background: linear-gradient(to bottom, #cc66ff 0%, #ffcccc 100%);">
+                <h2>💖 My Love 💖</h2>
+                <p><B>Happy Birthday, My Love! 💖🎂</B><br>
+<b>On this special day, I just want to remind you how incredibly precious you are to me. From the moment you walked into my life, you brought love, warmth, and endless happiness. Your smile is my sunshine, your laughter is my favorite melody, and your love is the greatest gift I could ever ask for.<br>
+
+I am so grateful to have you by my side, sharing every joy, every dream, and every beautiful moment together. You make our world brighter, my heart fuller, and our days sweeter. <p>Today, I celebrate you — your kindness, your beauty, your intelligence, and the amazing soul that makes you so special.</p>
+
+<p>May this birthday be as magical and wonderful as you are, my love. I can’t wait to create more beautiful memories with you, today and forever. 💕</p></b>
+
+Happy Birthday, My Sweetheart! 🎉😘✨ 🎉💕</p>
+                <img src="US1.jpg" alt="Our Love" width="190">
+				<br>
+                <p><button onclick="window.close()" style="padding:10px 20px;background:#ff00ff;border:round;font-size:14px;">Close</button></p>
+                </body></html>
+            `);
+        }
+		function createHeartRain() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.innerHTML = "💖";
+                heart.className = "heart";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 200);
+        }
+
+        createHeartRain();
+    </script>
+</body>
+</html>
